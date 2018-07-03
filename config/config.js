@@ -8,13 +8,6 @@ var conn = mysql.createConnection({
     database : 'mxtan'
 });
 
-var query = function (sql, callback) {
-    conn.getConnection(function (err, connection) {
-        connection.query(sql, function (err, request) {
-            callback(err, request);
-            connection.release();
-        });
-    });
-};
+conn.connect();
 
-exports.query = query;
+module.exports = conn;
