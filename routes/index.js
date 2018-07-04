@@ -1,9 +1,5 @@
-var express = require('express');
-var router = express.Router();
+import add from './add'
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.send({'mesge': 'sdfasdf'})
-});
-
-module.exports = router;
+export default app => {
+    app.use('/add', add);
+}
