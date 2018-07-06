@@ -4,8 +4,8 @@ import db from '../config/db'
 
 const router = express.Router()
 
-router.get('/navlist', function (req, res, next) {
-    db.query('select * from nav where state=1', function (err, result) {
+router.get('/navlist', (req, res, next) => {
+    db.query('select * from nav where state=1', (err, result) => {
         if (err) {
             res.send({
                 status: 2001,
