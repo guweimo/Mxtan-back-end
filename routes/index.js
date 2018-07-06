@@ -1,5 +1,5 @@
-import add from './add'
+import home from './home'
 
 export default app => {
-    app.use('/add', add);
+    app.use('/home', home);
 }
