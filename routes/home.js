@@ -17,8 +17,8 @@ router.get('/navlist', (req, res, next) => {
                 data: result
             })
         }
-    });
-});
+    })
+})
 
 router.post('/list', (req, res, next) => {
     let sql = 'select * from article where state=1 order by `current_time` desc'

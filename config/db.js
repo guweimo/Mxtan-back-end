@@ -7,9 +7,9 @@ var db = mysql.createConnection({
     user: 'root',
     password: 'root',
     database : 'mxtan'
-});
+})
 
-db.connect();
+db.connect()
 
 // module.exports = conn;
 export default db
