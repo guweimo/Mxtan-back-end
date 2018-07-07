@@ -1,4 +1,3 @@
-// var mysql = require('mysql');
 import mysql from 'mysql'
 
 // 连接数据库
@@ -11,5 +10,4 @@ var db = mysql.createConnection({
 
 db.connect()
 
-// module.exports = conn;
 export default db
