@@ -27,7 +27,7 @@ router.post('/list', (req, res, next) => {
     sql += type === '' ? '' : ' and a.n_id=?'
     sql += ' order by `current_time` desc'            // sql语句
 
-    let sqlParm = [type];
+    let sqlParm = [type]
 
     // 请求数据库，获取数据
     db.query(sql, sqlParm, (err, result) => {
