@@ -23,9 +23,10 @@ router.get('/navlist', (req, res, next) => {
 router.post('/list', (req, res, next) => {
     let type = req.query.type || ''
     
-    let sql = 'select a.*, n.title as n_title from article a, nav n where a.n_id=n.n_id and a.state=1'
-    sql += type === '' ? '' : ' and a.n_id=?'
-    sql += ' order by `current_time` desc'            // sql语句
+    let andSql = type === '' ? '' : ' and a.n_id=?'
+    let sql = `select a.*, n.title as n_title from article a, nav n 
+        where a.n_id=n.n_id and a.state=1 ${andSql}  
+        order by \`current_time\` desc`
 
     let sqlParm = [type]
 
