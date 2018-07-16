@@ -5,10 +5,8 @@ const router = express.Router()
 
 router.post('/loginUser', (req, res, next) => {
     let sql = `select * from users where user_id=?`
-    console.log(req.query)
-    let sqlParam = [req.query.name]
+    let sqlParam = [req.body.name]
     db.query(sql, sqlParam, (err, result) => {
-        console.log(result)
         if (err) {
             res.send({
                 status: 2001,
