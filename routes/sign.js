@@ -4,7 +4,11 @@ import db from '../config/db'
 const router = express.Router()
 
 router.post('/loginUser', (req, res, next) => {
-    db.query('', (err, result) => {
+    let sql = `select * from users where user_id=?`
+    console.log(req.query)
+    let sqlParam = [req.query.name]
+    db.query(sql, sqlParam, (err, result) => {
+        console.log(result)
         if (err) {
             res.send({
                 status: 2001,
@@ -18,3 +22,5 @@ router.post('/loginUser', (req, res, next) => {
         }
     })
 })
+
+export default router
