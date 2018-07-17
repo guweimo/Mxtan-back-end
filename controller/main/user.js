@@ -6,8 +6,18 @@ class User {
     }
     async login(req, res, next) {
         try {
-            const user = loginUser([req.body.name, req.body.pass])
-            console.log(user)
+            const user = await loginUser(req.body.name, req.body.pass)
+            if (user !== null) {
+                res.send({
+                    status: 2000,
+                    data: user
+                })
+            } else {
+                res.send({
+                    status: 2001,
+                    message: '用户名或密码错误！'
+                })
+            }
         } catch(err) {
             res.send({
                 status: 2001,

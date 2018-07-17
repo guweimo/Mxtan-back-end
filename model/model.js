@@ -17,5 +17,5 @@ export const findPageList = (type) => {
 
 export const loginUser = (...param) => {
     let sql = `select * from users where user_id=? and user_pass=?`
-    return db.first(sql, param)
+    return db.first(sql, ...param)
 }
