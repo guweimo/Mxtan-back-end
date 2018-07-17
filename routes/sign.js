@@ -1,7 +1,10 @@
 import express from 'express'
 import db from '../config/db'
+import User from '../controller/main/user'
 
 const router = express.Router()
+
+router.post('/loginUser', User.login)
 
 router.post('/loginUser', (req, res, next) => {
     let sql = `select * from users where user_id=? and user_pass=?`
