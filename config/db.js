@@ -10,4 +10,44 @@ var db = mysql.createConnection({
 
 db.connect()
 
-export default db
+const first = (sql, ...param) => {
+    return new Promise((resolve, reject) => {
+        db.query(sql, param, (err, res) => {
+            if (err) {
+                reject(err)
+                return
+            }
+            resolve(res[0] || null)
+        })
+    })
+}
+
+const all = (sql, ...param) => {
+    return new Promise((resolve, reject) => {
+        db.query(sql, param, (err, res) => {
+            if (err) {
+                reject(err)
+                return
+            }
+            resolve(res)
+        })
+    })
+}
+
+const execute = (sql, ...param) => {
+    return new Promise((resolve, reject) => {
+        db.query(sql, param, (err, res) => {
+            if (err) {
+                reject(err)
+                return
+            }
+            resolve(res)
+        })
+    })
+}
+
+export default {
+    first,
+    all,
+    execute
+}

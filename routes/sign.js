@@ -4,19 +4,26 @@ import db from '../config/db'
 const router = express.Router()
 
 router.post('/loginUser', (req, res, next) => {
-    let sql = `select * from users where user_id=?`
-    let sqlParam = [req.body.name]
+    let sql = `select * from users where user_id=? and user_pass=?`
+    let sqlParam = [req.body.name, req.body.pass]
     db.query(sql, sqlParam, (err, result) => {
         if (err) {
             res.send({
-                status: 2001,
+                status: 2005,
                 message: err.message
             })
         } else {
-            res.send({
-                status: 2000,
-                data: result
-            })
+            if (result.length == 0) {
+                res.send({
+                    status: 2001,
+                    message: '用户名或密码错误！'
+                })
+            } else {
+                res.send({
+                    status: 2000,
+                    data: result[0]
+                })
+            }
         }
     })
 })
