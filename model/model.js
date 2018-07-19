@@ -19,3 +19,8 @@ export const loginUser = (...param) => {
     let sql = `select * from users where username=? and pass=?`
     return db.first(sql, ...param)
 }
+
+export const insertArticle = (...param) => {
+    let sql = 'insert into article (title, description, marktext) values (?, ?, ?)'
+    return db.execute(sql, ...param)
+}

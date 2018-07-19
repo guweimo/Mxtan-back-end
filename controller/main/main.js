@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { findNavData, findPageList } from '../../model/model'
+import { findNavData, findPageList, insertArticle } from '../../model/model'
 
 class Main {
     constructor() {
@@ -15,7 +15,7 @@ class Main {
         } catch(err) {
             res.send({
                 status: 2001,
-                message: '获取导航失败'
+                message: '获取导航失败！'
             })
         }
     }
@@ -38,7 +38,17 @@ class Main {
         } catch(err) {
             res.send({
                 status: 2001,
-                message: '获取内容失败'
+                message: '获取内容失败！'
+            })
+        }
+    }
+    async saveArticle(req, res, next) {
+        try {
+            const result = await insertArticle()
+        } catch(err) {
+            res.send({
+                status: 2001,
+                message: '添加失败！'
             })
         }
     }
