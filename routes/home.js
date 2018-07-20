@@ -7,4 +7,6 @@ router.get('/navList', Main.getNavList)
 
 router.post('/list', Main.getPageList)
 
+router.post('/addArticle', Main.addArticle)
+
 export default router

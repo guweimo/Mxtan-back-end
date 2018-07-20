@@ -42,9 +42,17 @@ class Main {
             })
         }
     }
-    async saveArticle(req, res, next) {
+    async addArticle(req, res, next) {
         try {
-            const result = await insertArticle()
+            let param = [req.body.title, req.body.description, req.body.marktext]
+            const result = await insertArticle(...param)
+            console.log(result)
+            if (result.affectedRows > 0) {
+                res.send({
+                    status: 2000,
+                    data: result.insertId
+                })
+            }
         } catch(err) {
             res.send({
                 status: 2001,
