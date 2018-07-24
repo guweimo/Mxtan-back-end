@@ -21,6 +21,6 @@ export const loginUser = (...param) => {
 }
 
 export const insertArticle = (...param) => {
-    let sql = 'insert into article (title, description, marktext) values (?, ?, ?)'
+    let sql = 'insert into article (title, description, marktext, n_id) values (?, ?, ?, ?)'
     return db.execute(sql, ...param)
 }

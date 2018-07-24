@@ -44,7 +44,7 @@ class Main {
     }
     async addArticle(req, res, next) {
         try {
-            let param = [req.body.title, req.body.description, req.body.marktext]
+            let param = [req.body.title, req.body.description, req.body.marktext, req.body.type]
             const result = await insertArticle(...param)
             
             if (result.affectedRows > 0) {
