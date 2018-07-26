@@ -5,6 +5,7 @@ class Main {
     constructor() {
 
     }
+    // 获取导航列表数据
     async getNavList(req, res, next) {
         try {
             const navlist = await findNavData()
@@ -19,6 +20,7 @@ class Main {
             })
         }
     }
+    // 获取列表数据
     async getPageList(req, res, next) {
         try {
             let type = req.body.type || ''
@@ -30,10 +32,14 @@ class Main {
                 item.current_time = moment(item.current_time).format('YYYY-MM-DD HH:mm:ss')
                 item.update_time = moment(item.update_time).format('YYYY-MM-DD HH:mm:ss')
             }
+            let data = {
+                result: list,
+                total: 0
+            }
 
             res.send({
                 status: 2000,
-                data: list
+                data: data
             })
         } catch(err) {
             res.send({
@@ -42,6 +48,7 @@ class Main {
             })
         }
     }
+    // 发布博文
     async addArticle(req, res, next) {
         try {
             let param = [req.body.title, req.body.description, req.body.marktext, req.body.type]
