@@ -9,6 +9,6 @@ router.post('/list', Main.getPageList)
 
 router.post('/addArticle', Main.addArticle)
 
-router.post('/searchTitle', Main.searchTitle)
+router.post('/searchArticle', Main.searchTitle)
 
 export default router
