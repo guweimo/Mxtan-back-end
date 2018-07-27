@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { findNavData, findPageList, insertArticle } from '../../model/model'
+import { findNavData, findPageList, insertArticle, searchArticle } from '../../model/model'
 
 class Main {
     constructor() {
@@ -64,6 +64,25 @@ class Main {
             res.send({
                 status: 2001,
                 message: '添加失败！'
+            })
+        }
+    }
+    // 搜索
+    async searchTitle(req, res, next) {
+        try {
+            const result = await searchArticle(req.body.title)
+            let data = {
+                result,
+                total: 0
+            }
+            res.sesnd({
+                status: 2000,
+                data
+            })
+        } catch(err) {
+            res.send({
+                status: 2001,
+                message: '搜索失败！'
             })
         }
     }
