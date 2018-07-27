@@ -75,7 +75,7 @@ class Main {
                 result,
                 total: 0
             }
-            res.sesnd({
+            res.send({
                 status: 2000,
                 data
             })
