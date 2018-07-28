@@ -27,5 +27,5 @@ export const insertArticle = (...param) => {
 
 export const searchArticle = (title) => {
     let sql = 'select * from article where state=1 and title=? order by `current_time` desc'
-    return db.first(sql, title)
+    return db.all(sql, title)
 }
