@@ -32,6 +32,7 @@ class Main {
                 item.current_time = moment(item.current_time).format('YYYY-MM-DD HH:mm:ss')
                 item.update_time = moment(item.update_time).format('YYYY-MM-DD HH:mm:ss')
             }
+            
             let data = {
                 result: list,
                 total: 0
