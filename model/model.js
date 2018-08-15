@@ -29,3 +29,8 @@ export const searchArticle = (title) => {
     let sql = 'select * from article where state=1 and title=? order by `current_time` desc'
     return db.all(sql, title)
 }
+
+export const searchDetail = (id) => {
+    let sql = 'select * from article where state=1 and id=?'
+    return db.first(sql, id)
+}
