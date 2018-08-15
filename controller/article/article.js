@@ -17,7 +17,7 @@ class Article {
         }
 
         let {id, author, title, description: content, update_time: dateTime} = result
-        let data = {
+        const data = {
             id,
             author,
             title,
