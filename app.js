@@ -2,9 +2,11 @@ import http from 'http'
 // import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
+// import config from 'config-lite'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import router from './routes/index.js'
+import session from 'express-session'
 
 var app = express()
 
@@ -34,6 +36,8 @@ app.all('*', (req, res, next) => {
         next()
     }
 })
+
+// app.use(cookieParser())
 
 // app.use('/api/', indexRouter);
 // app.use('/api/users', usersRouter);
