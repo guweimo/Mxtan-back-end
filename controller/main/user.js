@@ -12,6 +12,7 @@ class User {
                     status: 2000,
                     data: user
                 })
+                res.session.userid = user.id
             } else {
                 res.send({
                     status: 2001,
