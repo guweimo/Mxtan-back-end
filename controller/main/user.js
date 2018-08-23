@@ -8,11 +8,11 @@ class User {
         try {
             const user = await loginUser(req.body.name, req.body.pass)
             if (user !== null) {
+                req.session.userid = user.id
                 res.send({
                     status: 2000,
                     data: user
                 })
-                res.session.userid = user.id
             } else {
                 res.send({
                     status: 2001,
