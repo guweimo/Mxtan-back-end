@@ -38,6 +38,11 @@ app.all('*', (req, res, next) => {
 })
 
 // app.use(cookieParser())
+app.use(session({
+    secret: 'random_string_goes_here',
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+}))
 
 // app.use('/api/', indexRouter);
 // app.use('/api/users', usersRouter);
