@@ -34,3 +34,8 @@ export const searchDetail = (id) => {
     let sql = 'select * from article where state=1 and id=?'
     return db.first(sql, id)
 }
+
+export const searchUser = (...param) => {
+    let sql = `select * from users where id=?`
+    return db.first(sql, ...param)
+}

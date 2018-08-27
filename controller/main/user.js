@@ -1,4 +1,4 @@
-import { loginUser } from '../../model/model'
+import { loginUser, searchUser } from '../../model/model'
 
 class User {
     constructor() {
@@ -24,6 +24,24 @@ class User {
                 status: 2001,
                 message: '登录失败'
             })
+        }
+    }
+    async getUser(req, res, next) {
+        try {
+            const user = await searchUser(req.query.id)
+            if (user !== null) {
+                res.send({
+                    status: 2000,
+                    data: user
+                })
+            } else {
+                res.send({
+                    status: 2001,
+                    message: '不存在该用户！'
+                })
+            }
+        } catch (err) {
+            
         }
     }
 }
