@@ -1,4 +1,4 @@
-import { loginUser, searchUser } from '../../model/model'
+import { loginUser, searchUser, registerUser, firstTypeUser } from '../../model/model'
 
 class User {
     constructor() {
@@ -29,8 +29,31 @@ class User {
     }
     // 注册
     async register(req, res, next) {
-        let formData = {...req.body}
-        console.log(formData)
+        let result = { message: '' }    // 返回信息
+        let formData = req.body
+        const nameUser = await firstTypeUser('username', formData.name)
+        const emailUser = await firstTypeUser('email', formData.email)
+        if (nameUser || emailUser) {
+            result = {
+                status: 2001,
+                type: nameUser ? 'name' : 'email',
+                message: nameUser ? '该用户名已存在！' : '该邮箱已存在！'
+            }
+        } else {
+            const user = await registerUser(formData.name, formData.pass, formData.email)
+            if (user && user.insertId) {
+                result = {
+                    status: 2000,
+                    message: '注册成功！'
+                }
+            } else {
+                result = {
+                    status: 2001,
+                    message: '注册失败'
+                }
+            }
+        }
+        res.send(result)
     }
     // 获取单个用户信息
     async getUser(req, res, next) {
@@ -48,7 +71,10 @@ class User {
                 })
             }
         } catch (err) {
-            
+            res.send({
+                status: 2001,
+                message: '查询失败！'
+            })
         }
     }
 }

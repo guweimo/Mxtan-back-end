@@ -15,14 +15,19 @@ export const findPageList = (type) => {
     return db.all(sql, type)
 }
 
-export const loginUser = (...param) => {
+export const loginUser = (...params) => {
     let sql = `select * from users where username=? and pass=?`
-    return db.first(sql, ...param)
+    return db.first(sql, ...params)
 }
 
-export const insertArticle = (...param) => {
+export const registerUser = (...params) => {
+    let sql = `insert into users (username, pass, email) values (?, ?, ?)`
+    return db.execute(sql, ...params)
+}
+
+export const insertArticle = (...params) => {
     let sql = 'insert into article (title, description, marktext, n_id) values (?, ?, ?, ?)'
-    return db.execute(sql, ...param)
+    return db.execute(sql, ...params)
 }
 
 export const searchArticle = (title) => {
@@ -35,7 +40,12 @@ export const searchDetail = (id) => {
     return db.first(sql, id)
 }
 
-export const searchUser = (...param) => {
+export const searchUser = (...params) => {
     let sql = `select * from users where id=?`
-    return db.first(sql, ...param)
+    return db.first(sql, ...params)
+}
+
+export const firstTypeUser = (type, value) => {
+    let sql = `select * from users where ${type}=?`
+    return db.first(sql, value)
 }
