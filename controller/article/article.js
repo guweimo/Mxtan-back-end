@@ -5,7 +5,7 @@ class Article {
     constructor() {
 
     }
-
+    // 查询博文详情
     async getDetail(req, res, next) {
         let result = await searchDetail(req.query.id)
         // 判断是否存在，如果不存在就返回错误信息

@@ -4,6 +4,7 @@ class User {
     constructor() {
 
     }
+    // 登录
     async login(req, res, next) {
         try {
             const user = await loginUser(req.body.name, req.body.pass)
@@ -26,6 +27,7 @@ class User {
             })
         }
     }
+    // 获取单个用户信息
     async getUser(req, res, next) {
         try {
             const user = await searchUser(req.query.id)
