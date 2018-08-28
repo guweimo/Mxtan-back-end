@@ -27,6 +27,11 @@ class User {
             })
         }
     }
+    // 注册
+    async register(req, res, next) {
+        let formData = {...req.body}
+        console.log(formData)
+    }
     // 获取单个用户信息
     async getUser(req, res, next) {
         try {
