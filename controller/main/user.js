@@ -1,20 +1,32 @@
 import { loginUser, searchUser, registerUser, firstTypeUser } from '../../model/model'
 import crypto from 'crypto'
+import moment from 'moment'
 
 class User {
     constructor() {
-
+        this.encryption = this.encryption.bind(this)
+        this.login = this.login.bind(this)
+        this.register = this.register.bind(this)
     }
 
     // 登录
     async login(req, res, next) {
         try {
-            const user = await loginUser(req.body.name, req.body.pass)
+            const pass = this.encryption(req.body.pass)
+            const user = await loginUser(req.body.name, pass)
             if (user !== null) {
                 req.session.userid = user.id
+                const {id, username, email, avatar, name} = user
+                const data = {
+                    id,
+                    username,
+                    email,
+                    avatar,
+                    name
+                }
                 res.send({
                     status: 2000,
-                    data: user
+                    data
                 })
             } else {
                 res.send({
@@ -43,6 +55,7 @@ class User {
                 message: nameUser ? '该用户名已存在！' : '该邮箱已存在！'
             }
         } else {
+            formData.pass = this.encryption(formData.pass)
             const user = await registerUser(formData.name, formData.pass, formData.email)
             if (user && user.insertId) {
                 result = {
