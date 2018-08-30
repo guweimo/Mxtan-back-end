@@ -16,7 +16,7 @@ class User {
             const user = await loginUser(req.body.name, pass)
             if (user !== null) {
                 req.session.userid = user.id
-                const {id, username, email, avatar, name} = user
+                const { id, username, email, avatar, name } = user
                 const data = {
                     id,
                     username,
