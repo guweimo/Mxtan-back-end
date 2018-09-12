@@ -5,6 +5,7 @@ class Main {
     constructor() {
 
     }
+
     // 获取导航列表数据
     async getNavList(req, res, next) {
         try {
@@ -20,6 +21,7 @@ class Main {
             })
         }
     }
+
     // 获取列表数据
     async getPageList(req, res, next) {
         try {
@@ -49,6 +51,7 @@ class Main {
             })
         }
     }
+
     // 发布博文
     async addArticle(req, res, next) {
         try {
@@ -68,6 +71,7 @@ class Main {
             })
         }
     }
+    
     // 搜索
     async searchTitle(req, res, next) {
         try {

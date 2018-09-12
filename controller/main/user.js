@@ -95,11 +95,13 @@ class User {
         }
     }
 
+    // 加密密码，并截取2-6的字符串合并一起加密
     encryption(pass) {
         const newpass = this.MD5(this.MD5(pass).substr(2, 6) + this.MD5(pass))
         return newpass
     }
 
+    // md5加密
     MD5(pass) {
         const md5 = crypto.createHash('md5')
         return md5.update(pass).digest('base64')
