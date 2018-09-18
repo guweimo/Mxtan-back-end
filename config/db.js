@@ -10,6 +10,7 @@ var db = mysql.createConnection({
 
 db.connect()
 
+// 搜索单个内容
 const first = (sql, ...param) => {
     return new Promise((resolve, reject) => {
         db.query(sql, param, (err, res) => {
@@ -22,6 +23,7 @@ const first = (sql, ...param) => {
     })
 }
 
+// 搜索所有内容
 const all = (sql, ...param) => {
     return new Promise((resolve, reject) => {
         db.query(sql, param, (err, res) => {
@@ -34,6 +36,7 @@ const all = (sql, ...param) => {
     })
 }
 
+// 执行所有sql语句
 const execute = (sql, ...param) => {
     return new Promise((resolve, reject) => {
         db.query(sql, param, (err, res) => {
