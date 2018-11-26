@@ -79,6 +79,7 @@ class User {
             if (user !== null) {
                 // 当前就这样 hack 一下，到时候在优化
                 delete user['pass']
+                user.current_time = moment(user.current_time).format('YYYY-MM-DD')
                 res.send({
                     status: 2000,
                     data: user,
