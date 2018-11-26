@@ -56,7 +56,7 @@ class User {
             }
         } else {
             formData.pass = this.encryption(formData.pass)
-            const user = await registerUser(formData.name, formData.pass, formData.email)
+            const user = await registerUser(formData.name, formData.pass, formData.email, formData.name)
             if (user && user.insertId) {
                 result = {
                     status: 2000,
@@ -77,20 +77,23 @@ class User {
         try {
             const user = await searchUser(req.query.id)
             if (user !== null) {
+                // 当前就这样 hack 一下，到时候在优化
+                delete user['pass']
                 res.send({
                     status: 2000,
-                    data: user
+                    data: user,
                 })
             } else {
                 res.send({
                     status: 2001,
-                    message: '不存在该用户！'
+                    message: '不存在该用户！',
                 })
             }
         } catch (err) {
+            console.log(err)
             res.send({
                 status: 2001,
-                message: '查询失败！'
+                message: '查询失败！',
             })
         }
     }

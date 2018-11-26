@@ -21,7 +21,7 @@ export const loginUser = (...params) => {
 }
 
 export const registerUser = (...params) => {
-    let sql = `insert into users (username, pass, email) values (?, ?, ?)`
+    let sql = `insert into users (username, pass, email, name) values (?, ?, ?, ?)`
     return db.execute(sql, ...params)
 }
 
