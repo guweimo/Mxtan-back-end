@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "forever start -s ./bin/www",
-    "stop": "forever stop -s ./bin/www",
+    "start": "node index.js",
+    "dev": "forever start -s index.js",
+    "stop": "forever stop -s index.js",
     "nodev": "node-dev index.js"
   },
   "dependencies": {
