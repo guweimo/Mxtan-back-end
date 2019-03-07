@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import router from './routes/index.js'
 import session from 'express-session'
+import history from 'connect-history-api-fallback'
 
 var app = express()
 
@@ -18,6 +19,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(history())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.all('*', (req, res, next) => {
