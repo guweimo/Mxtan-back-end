@@ -72,6 +72,13 @@ class Crawl {
             message: '请求成功',
         })
     }
+
+    async getList(req, res, next) {
+        let pageNum = parseInt(req.body.pageNum) - 1
+        let pageSize = req.body.pageSize
+        let pageTotal = pageNum * parseInt(pageSize)
+        await getListPage(pageTotal, pageSize)
+    }
 }
 
 export default new Crawl()

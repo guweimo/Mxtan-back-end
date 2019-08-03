@@ -12,3 +12,12 @@ export const saveZhihuList = (...params) => {
     const sql = `insert into zhihu (author, title, content, excerpt, create_time, updated_time) values (?, ?, ?, ?, ?, ?)`
     return db.execute(sql, ...params)
 }
+
+export const getListPage = (...params) => {
+    let p = {
+        pageSize: params.pageSize,
+        pageTotal: params.pageTotal
+    }
+    const sql = 'select * from zhihu limit ?,?'
+    return db.execute(sql, ...params)
+}
