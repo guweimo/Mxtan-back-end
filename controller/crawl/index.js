@@ -1,4 +1,4 @@
-import { saveZhihuList } from '../../model/crawlModel'
+import { saveZhihuList, getListPage } from '../../model/crawlModel'
 import request from '../../utils/request'
 
 class Crawl {
@@ -66,7 +66,6 @@ class Crawl {
                 isend = true
             }
         }
-        console.log(num)
         res.send({
             status: 2000,
             message: '请求成功',
@@ -77,7 +76,12 @@ class Crawl {
         let pageNum = parseInt(req.body.pageNum) - 1
         let pageSize = req.body.pageSize
         let pageTotal = pageNum * parseInt(pageSize)
-        await getListPage(pageTotal, pageSize)
+        let result = await getListPage(pageTotal, pageSize)
+        res.send({
+            status: 2000,
+            message: '请求成功',
+            data: result
+        })
     }
 }
 
