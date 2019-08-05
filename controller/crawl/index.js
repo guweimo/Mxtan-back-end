@@ -90,7 +90,7 @@ class Crawl {
         res.send({
             status: 2000,
             message: '请求成功',
-            data: result
+            data: result[0]
         })
     }
 }
