@@ -21,3 +21,8 @@ export const getListPage = (...params) => {
     const sql = 'select * from zhihu limit ?,?'
     return db.execute(sql, ...params)
 }
+
+export const fetchDetail = (id) => {
+    const sql = 'select * from zhihu where id=?'
+    return db.execute(sql, id)
+}
