@@ -1,4 +1,4 @@
-import { saveZhihuList, getListPage, fetchDetail } from '../../model/appModel'
+import { getListPage, fetchDetail } from '../../model/appModel'
 import request from '../../utils/request'
 
 class App {
@@ -6,12 +6,16 @@ class App {
         
     }
 
-    async getList(req, res, next) {
+    async getQueryList(req, res) {
         
     }
 
-    async getDetail(req, res, next) {
+    async getArticleById(req, res) {
         
+    }
+
+    async saveArticle(req, res) {
+
     }
 }
 

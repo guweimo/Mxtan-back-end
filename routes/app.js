@@ -4,8 +4,8 @@ import App from '../controller/app'
 
 const router = express.Router()
 
-router.get('/fetch', App.fetchZhihu)
-router.post('/list', App.getList)
-router.post('/detail', App.getDetail)
+router.post('/list', App.getQueryList)
+router.post('/detail', App.getArticleById)
+router.post('/save', App.saveArticle)
 
 export default router
