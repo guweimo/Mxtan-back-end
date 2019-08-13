@@ -5,12 +5,12 @@ export const getListPage = (...params) => {
         pageSize: params.pageSize,
         pageTotal: params.pageTotal
     }
-    const sql = 'select * from zhihu limit ?,?'
+    const sql = 'select * from blog limit ?,?'
     return db.execute(sql, ...params)
 }
 
 export const fetchDetail = (id) => {
-    const sql = 'select * from zhihu where id=?'
+    const sql = 'select * from blog where id=?'
     return db.execute(sql, id)
 }
 
