@@ -5,13 +5,13 @@ export const getListPage = (...params) => {
         pageSize: params.pageSize,
         pageTotal: params.pageTotal
     }
-    const sql = 'select * from blog limit ?,?'
+    const sql = 'select * from blog where title=? limit ?,?'
     return db.execute(sql, ...params)
 }
 
 export const fetchDetail = (id) => {
     const sql = 'select * from blog where id=?'
-    return db.execute(sql, id)
+    return db.first(sql, id)
 }
 
 export const saveData = (...params) => {
