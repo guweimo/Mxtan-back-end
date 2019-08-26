@@ -68,9 +68,9 @@ router(app)
 //   res.render('error');
 // });
 
-var port = normalizePort(process.env.PORT || '3000')
+var port = normalizePort(process.env.PORT || '3080')
 app.set('port', port)
-
+console.log(port)
 var server = http.createServer(app)
 
 server.listen(port)

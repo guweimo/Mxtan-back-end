@@ -15,6 +15,29 @@ export const fetchDetail = (id) => {
 }
 
 export const saveData = (...params) => {
-    const sql = ''
+    let sql = 'insert into blog (title, content, description, marktext, type_id) values (?, ?, ?, ?, ?)'
     return db.execute(sql, ...params)
+}
+
+export const getBlogAllType = () => {
+    let sql = 'select * from blog_type'
+    return db.all(sql)
+}
+
+export const getBlogList = (data) => {
+    let sql = 'select * from blog where 1=1'
+    let sqlSlice = ''
+    let params = []
+    if (data.type) {
+        sqlSlice = ' and type_id=?'
+        params.push(data.type)
+    }
+    if (data.title) {
+        sqlSlice += ' and title like ?'
+        let title = `%${data.title}%`
+        params.push(title)
+    }
+    sql += sqlSlice + ' limit ?,?'
+    params.push(data.currentSize, data.limit)
+    return db.all(sql, ...params)
 }
