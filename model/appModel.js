@@ -37,7 +37,7 @@ export const getBlogList = (data) => {
         let title = `%${data.title}%`
         params.push(title)
     }
-    sql += sqlSlice + ' limit ?,?'
+    sql += sqlSlice + ' order by create_time desc limit ?,?'
     params.push(data.currentSize, data.limit)
     return db.all(sql, ...params)
 }
